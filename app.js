@@ -79,7 +79,38 @@ function deleter()
    }
 }
 
+function keyboardFunc(e)
+{
+  let temp = e.key ;
+  console.log(temp);
 
+   if(temp == "+" || temp == "-" || temp == "*" || temp == "/" )
+   {
+      if(flag == 0)
+   {
+      a = calc(a,b,op);
+      display.textContent = a;
+      b="";
+   }
+      op = temp;
+      flag = 0;
+      return;
+   }
+   if(temp != "Enter" && flag == 1)
+   {
+      a = a + temp;
+      display.textContent = a;
+   }
+   if(temp != "Enter" && flag == 0)
+   {
+      b = b + temp;
+      display.textContent = b;
+   }
+   if(temp == "Enter")
+   {
+      display.textContent = (calc(a,b,op));
+   }
+}
 
 const operations = document.querySelectorAll(".operation");
 operations.forEach(operation => operation.addEventListener("click",getSign));
@@ -95,4 +126,4 @@ clear.addEventListener("click",clearAll);
 const del = document.querySelector("#del");
 del.addEventListener("click",deleter);
 
-
+window.addEventListener("keydown",keyboardFunc);
