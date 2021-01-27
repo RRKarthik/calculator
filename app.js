@@ -82,8 +82,12 @@ function deleter()
 function keyboardFunc(e)
 {
   let temp = e.key ;
-  console.log(temp);
 
+   let arr = ["1","2","3","4","5","6","7","8","9","0","."];
+
+  if(temp in arr || temp == "+" || temp == "-" || temp == "*" || temp == "/" || temp == "Enter" || temp == ".")
+   {
+      
    if(temp == "+" || temp == "-" || temp == "*" || temp == "/" )
    {
       if(flag == 0)
@@ -110,6 +114,7 @@ function keyboardFunc(e)
    {
       display.textContent = (calc(a,b,op));
    }
+}
 }
 
 const operations = document.querySelectorAll(".operation");
