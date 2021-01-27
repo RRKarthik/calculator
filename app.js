@@ -56,6 +56,31 @@ function feeder(e)
    
 }
 
+function clearAll()
+{
+   a = "";
+   b = "";
+   op = "";
+   flag = 1;
+   display.textContent = "";
+}
+
+function deleter()
+{
+   if(flag == 1)
+   {
+      a = a.slice(0,a.length-1);
+      display.textContent = a;
+   }
+   if(flag == 0)
+   {
+      b = b.slice(0,b.length-1);
+      display.textContent = b;
+   }
+}
+
+
+
 const operations = document.querySelectorAll(".operation");
 operations.forEach(operation => operation.addEventListener("click",getSign));
 
@@ -64,32 +89,10 @@ buttons.forEach((button)=>button.addEventListener("click",feeder));
 
 const display = document.querySelector("p");
 
+const clear = document.querySelector("#clear");
+clear.addEventListener("click",clearAll);
+
+const del = document.querySelector("#del");
+del.addEventListener("click",deleter);
 
 
-
-
-/*
-function feeder(e)
-{  
-  let temp = e.target.getAttribute("data-digit");
-   
-   if(temp != "=")
-   { 
-    value = value +  temp;
-    display.textContent = value;
-   }  
-   if(temp == "=")
-   {
-       console.log(value);
-       if(value.includes("+")){
-          display.textContent = (calc(value.split("+")[0],value.split("+")[1],"+"));
-       }else if(value.includes("-")){
-        display.textContent =(calc(value.split("-")[0],value.split("-")[1],"-"));
-     }else if(value.includes("*")){
-        display.textContent =(calc(value.split("*")[0],value.split("*")[1],"*"));
-     }else{
-        display.textContent =(calc(value.split("/")[0],value.split("/")[1],"/"));  
-     }
-   }
-}
-*/
